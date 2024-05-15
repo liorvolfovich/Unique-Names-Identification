@@ -1,21 +1,23 @@
 import csv
 import editdistance
-import sys
+import os
 
-NICKNAME_CSV_ARG = 1
+# Define the relative path to the CSV file
+CSV_FILE_NAME = "names.csv"
+CSV_FILE_PATH = os.path.join(os.path.dirname(__file__), CSV_FILE_NAME)
 
-# Global dictionary to store nickname mappings
+# dictionary to store nickname mappings
 nicknames_dict = dict()
 
 
-def load_nicknames_from_csv(csv_file_path: str):
+def load_nicknames_from_csv():
     """
     Load nickname mappings from a CSV file into the global nicknames_dict dictionary.
 
     @param csv_file_path: Path to the CSV file containing nickname mappings.
     @return: None
     """
-    with open(csv_file_path, newline='') as csvfile:
+    with open(CSV_FILE_PATH, newline='') as csvfile:
         reader = csv.reader(csvfile)
         for row in reader:
             original_name = row[0].strip().lower()
@@ -200,15 +202,16 @@ def run_tests():
 
 if __name__ == '__main__':
 
-    # Check if a CSV file path was provided as a command-line argument
-    if len(sys.argv) != 2:
-        print("insert nicknames csv file path as a command-line argument")
-        sys.exit(1)
+    # Load nicknames into a dictionary from the CSV file
+    load_nicknames_from_csv()
 
-    # Get the CSV file path from the command-line arguments
-    csv_path_from_args = sys.argv[NICKNAME_CSV_ARG]
-
-    # Load nicknames into a dictionary
-    load_nicknames_from_csv(csv_path_from_args)
+    # if len(sys.argv) != 2:
+    #     print("insert nicknames csv file path as a command-line argument")
+    #     sys.exit(1)
+    # # Get the CSV file path from the command-line arguments
+    # csv_path_from_args = sys.argv[NICKNAME_CSV_ARG]
+    #
+    # # Load nicknames into a dictionary
+    # load_nicknames_from_csv(csv_path_from_args)
 
     run_tests()
