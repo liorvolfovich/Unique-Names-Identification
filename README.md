@@ -1,6 +1,6 @@
 # Unique Names Identification
 
-This project implements a method to determine the uniqueness of names in a transaction based on various criteria, including nickname mappings and edit distance.
+This project implements a method to determine the uniqueness of names in a transaction.
 
 ## Setup
 
