@@ -31,10 +31,12 @@ docker build -t unique-names .
 After building the image, you can run the Docker container using the following command:
 
 ```bash
-docker run --rm unique-names
+docker run --rm unique-names "bill_first_name" "bill_last_name" "ship_first_name" "ship_last_name" "bill_name_on_card"
 ```
 
-This command will execute the Python script inside the container, which counts the number of unique names based on predefined criteria.
+Replace `bill_first_name`, `bill_last_name`, `ship_first_name`, `ship_last_name`, and `bill_name_on_card` with the actual names for your transaction. Make sure to use double quotes (`"`) for each name if they contain spaces.
+
+This command will execute the Python script inside the container, which counts the number of unique names in the transaction.
 
 ## Files
 
@@ -43,12 +45,18 @@ The project consists of the following components:
 - **Dockerfile**: Specifies the environment setup for running the Python script.
 - **unique_names.py**: Contains the implementation of the `count_unique_names` function, which determines the uniqueness of names in a transaction.
 - **names.csv**: A CSV file containing nickname mappings used by the `count_unique_names` function.
+- **tests.py**: Contains test cases to validate the `count_unique_names` function.
 
-### Project Structure
 
-- The `load_nicknames_from_csv` function loads nickname mappings from the `names.csv` file into a dictionary (`nicknames_dict`).
-- The `count_unique_names` function takes input parameters related to billing and shipping names, compares them using various criteria, and returns a code indicating uniqueness.
-- The `run_tests` function contains test cases to validate the `count_unique_names` function.
+## Running Tests
+
+The `tests.py` script contains test cases to validate the `count_unique_names` function. To run the tests, execute the following command in your terminal from the project directory (`unique-names`):
+
+```bash
+python tests.py
+```
+
+This will run the test cases and display the results. All test cases should pass if the `count_unique_names` function is implemented correctly.
 
 ## Requirements
 

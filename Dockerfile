@@ -1,4 +1,4 @@
-# Use the official Python 3.9 image from Docker Hub
+# Use the official Python 3.9 image from Docker Hub as the base image
 FROM python:3.9
 
 # Set the working directory inside the container
@@ -11,5 +11,8 @@ COPY names.csv /Unique_Names/
 # Install the required Python package (editdistance)
 RUN pip install editdistance
 
-# Command to run the Python script when the container starts
-CMD ["python", "unique_names.py", "names.csv"]
+# Set the entrypoint command to run the Python script
+ENTRYPOINT ["python", "unique_names.py"]
+
+# Default command arguments to be overridden at runtime
+CMD ["", "", "", "", ""]
